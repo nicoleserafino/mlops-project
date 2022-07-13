@@ -16,7 +16,7 @@ resource "azurerm_kusto_cluster" "cluster" {
 }
 
 resource "azurerm_kusto_database" "database" {
-  name                = "kvmonitoringadxdb"
+  name                = "mlmonitoring"
   resource_group_name = var.rg_name
   location            = var.location
   cluster_name        = azurerm_kusto_cluster.cluster.name
