@@ -19,7 +19,7 @@ resource "azurerm_kusto_database" "database" {
   name                = "mlmonitoring"
   resource_group_name = var.rg_name
   location            = var.location
-  cluster_name        = azurerm_kusto_cluster.cluster.name
+  cluster_name        = azurerm_kusto_cluster.cluster.name[count.index]
   count               = var.enable_monitoring ? 1 : 0
 }
 
@@ -46,7 +46,7 @@ resource "azurerm_key_vault_secret" "SP_TENANT_ID" {
 
 resource "azurerm_key_vault_secret" "ADX_URI" {
   name         = "kvmonitoringadxuri"
-  value        = azurerm_kusto_cluster.cluster.uri
+  value        = azurerm_kusto_cluster.cluster.uri[count.index]
   key_vault_id = var.key_vault_id
   count               = var.enable_monitoring ? 1 : 0
 }
