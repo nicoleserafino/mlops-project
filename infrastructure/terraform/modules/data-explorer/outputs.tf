@@ -7,5 +7,5 @@ output "uri" {
 }
 
 output "name" {
-  value = azurerm_kusto_database.database.name
+  value = azurerm_kusto_database.database[0].name
 }
