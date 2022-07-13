@@ -1,9 +1,9 @@
 output "id" {
-  value = azurerm_kusto_cluster.cluster.id[count.index]
+  value = azurerm_kusto_cluster.cluster[0].id
 }
 
 output "uri" {
-  value = azurerm_kusto_cluster.cluster.uri[count.index]
+  value = azurerm_kusto_cluster.cluster[0].uri
 }
 
 output "name" {
