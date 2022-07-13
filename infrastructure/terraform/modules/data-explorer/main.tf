@@ -53,7 +53,7 @@ resource "azurerm_key_vault_secret" "ADX_URI" {
 
 resource "azurerm_key_vault_secret" "ADX_DB" {
   name         = "kvmonitoringadxdb"
-  value        = azurerm_kusto_database.database.name
+  value        = azurerm_kusto_database.database[0].name
   key_vault_id = var.key_vault_id
   count               = var.enable_monitoring ? 1 : 0
 }
